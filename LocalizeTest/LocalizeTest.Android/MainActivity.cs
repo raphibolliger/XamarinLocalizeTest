@@ -1,10 +1,8 @@
 ﻿using System;
-
+using System.Globalization;
+using System.Resources;
 using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
 
 namespace LocalizeTest.Droid
@@ -16,6 +14,31 @@ namespace LocalizeTest.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
+
+            var resourceNames = typeof(Resources.Resources).Assembly.GetManifestResourceNames();
+            Console.WriteLine("### RESOURCE NAME ### | Found [{resourceNames.Length}] resource names.");
+            foreach (var name in resourceNames)
+            {
+                Console.WriteLine($"### RESOURCE NAME ### | : {name}");
+            }
+
+            ResourceManager rm = new ResourceManager("LocalizeTest.Resources.Resources", typeof(Resources.Resources).Assembly);
+
+            string unsupportedLanguages = "";
+
+            CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
+            foreach (CultureInfo culture in cultures)
+            {
+                try
+                {
+                    var translatedString = rm.GetString("Test1", culture);
+                    Console.WriteLine($"### LANGUAGES ### | {culture.DisplayName} is supported | String: {translatedString}");
+                }
+                catch (Exception)
+                {
+                    unsupportedLanguages += $"[{culture.TwoLetterISOLanguageName}] ";
+                }
+            }
 
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);

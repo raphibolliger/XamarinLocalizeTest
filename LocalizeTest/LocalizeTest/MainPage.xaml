@@ -1,14 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:LocalizeTest"
              x:Class="LocalizeTest.MainPage">
 
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <Label Text="English" FontSize="20" Margin="0,40,0,0" HorizontalOptions="Center"></Label>
+        <Label Text="{Binding English}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" />
+
+        <Label Text="German" FontSize="20" Margin="0,40,0,0" HorizontalOptions="Center"></Label>
+        <Label Text="{Binding German}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" />
+
+        <Label Text="French" FontSize="20" Margin="0,40,0,0" HorizontalOptions="Center"></Label>
+        <Label Text="{Binding French}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" />
+
+        <Label Text="Italian" FontSize="20" Margin="0,40,0,0" HorizontalOptions="Center"></Label>
+        <Label Text="{Binding Italian}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" />
+
+        <Label Text="Chinese" FontSize="20" Margin="0,40,0,0" HorizontalOptions="Center"></Label>
+        <Label Text="{Binding Chinese}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" />
     </StackLayout>
 
 </ContentPage>
